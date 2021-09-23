@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/iseekyouu/teammate-me.git"
+  },
+  "author": "Anatoly Novoselov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iseekyouu/teammate-me/issues"
+  },
+  "homepage": "https://github.com/iseekyouu/teammate-me#readme",
+  "dependencies": {
+    "koa": "^2.13.1",
+    "mongodb": "^4.1.2",
+    "nodemon": "^2.0.12",
+    "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "eslint": "^7.32.0",
+    "ts-node": "^10.2.1"
+  }
+}
