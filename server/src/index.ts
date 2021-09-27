@@ -5,14 +5,14 @@ import logger from "koa-logger";
 import json from "koa-json";
 import bodyParser from "koa-bodyparser";
 
-import db from './lib/db';
+import db from 'lib/db';
 
 const app = new Koa();
 const router = new Router();
 
 // Hello world
 router.get("/", async (ctx, next) => {
-  console.log({ db });
+  console.log({ db: await db });
   ctx.body = 'helo world';
   await next();
 });
