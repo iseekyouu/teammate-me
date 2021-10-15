@@ -5,7 +5,10 @@ module.exports = {
     '@typescript-eslint',
   ],
   extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
+    'airbnb',
+    'airbnb-typescript/base',
   ],
+  parserOptions: {
+    project: './tsconfig.eslint.json',
+  },
 };
