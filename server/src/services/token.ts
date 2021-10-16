@@ -22,9 +22,8 @@ export function decrypt(encrypted: string) {
   const decipher = crypto.createDecipheriv(algorithm, secret, iv);
   let decrypted = decipher.update(unsafeBase64, 'base64', 'utf8');
   decrypted += decipher.final('utf8');
-  const [username, password, timestamp] = decrypted.split('|');
+  const [username, password, timestamp] = decrypted.split(':');
   return {
     username, password, timestamp,
   };
-};
-
+}

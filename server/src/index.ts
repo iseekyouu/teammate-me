@@ -9,7 +9,6 @@ import usersRoutes from 'controllers/users';
 import errorHandler from 'lib/errorHandler';
 
 const app = new Koa();
-
 // Routes
 const router = new Router();
 router
