@@ -4,9 +4,15 @@ content-type: application/json
 
 {
   "username": "one",
-  "passowrd": "two"
+  "password": "two"
 }
 
+### token decrypt
+GET http://localhost:7001/api/v1/auth/token?token=gw72w042GSFA_jQPU5a_orcG
+
+
+### token EMPTY
+GET http://localhost:7001/api/v1/auth/token?token
 
 ### sign up
 POST http://localhost:7001/api/v1/users
