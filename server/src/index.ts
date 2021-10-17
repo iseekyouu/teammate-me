@@ -6,6 +6,7 @@ import json from 'koa-json';
 import bodyParser from 'koa-bodyparser';
 import authRoutes from 'controllers/auth';
 import usersRoutes from 'controllers/users';
+import teamsRoutes from 'controllers/teams';
 import errorHandler from 'lib/errorHandler';
 
 const app = new Koa();
@@ -13,7 +14,12 @@ const app = new Koa();
 const router = new Router();
 router
   .use(errorHandler)
-  .use('/api/v1', authRoutes.routes(), usersRoutes.routes())
+  .use(
+    '/api/v1',
+    authRoutes.routes(),
+    usersRoutes.routes(),
+    teamsRoutes.routes(),
+  )
   .use(router.allowedMethods());
 
 app

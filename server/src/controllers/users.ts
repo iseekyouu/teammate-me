@@ -10,10 +10,10 @@ const router = new Router();
 router
   .post('/users', async (ctx) => {
     const {
-      username, password, team, role,
+      username, password, teamName, role,
     } = ctx.request.body;
     const user = await createUser({
-      username, password, team, role,
+      username, password, teamName, role,
     });
 
     ctx.body = { id: user.id };
@@ -25,9 +25,9 @@ router
   })
   .patch('/users/me', async (ctx: Koa.Context) => {
     const { user } = ctx;
-    const { team, role } = ctx.request.body;
-    assert(team || role, 400, 'empty body');
-    await updateUser(user.id, { team, role });
+    const { teamName, role } = ctx.request.body;
+    assert(teamName || role, 400, 'empty body');
+    await updateUser(user, { teamName, role });
     ctx.body = DEFAULT_SUCCESS_RESPONSE;
   });
 

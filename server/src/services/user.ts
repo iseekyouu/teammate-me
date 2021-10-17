@@ -1,23 +1,26 @@
-import User from 'models/User';
+import User, { IUser } from 'models/User';
 import { USER_ROLE_USER } from 'lib/constants';
+import { getTeamByName } from 'services/team';
+import { ITeam } from 'models/Team';
 
 type TCreateUserParams = {
   username: string;
   password: string;
   role?: string;
-  team?: string;
+  teamName?: string;
 }
 
 type TUpdateUserParams = {
-  team?: string;
+  teamName?: string;
   role?: string;
 }
 
 export async function createUser({
-  username, password, team, role = USER_ROLE_USER,
+  username, password, teamName = 'other', role = USER_ROLE_USER,
 }: TCreateUserParams) {
+  const team: ITeam = teamName && await getTeamByName(teamName);
   return User.create({
-    username, password, team, role,
+    username, password, team: team && team.id, role,
   });
 }
 
@@ -26,9 +29,13 @@ export async function authenticateUser(username: string, password: string) {
 }
 
 export async function getUserById(userId: string) {
-  return User.findOne({ id: userId });
+  return User.findOne({ id: userId }).populate('team');
 }
 
-export async function updateUser(userId: string, params: TUpdateUserParams) {
-  return User.updateOne({ userId, $set: params });
+export async function updateUser(
+  user: IUser,
+  { role, teamName }: TUpdateUserParams,
+) {
+  const team: ITeam = teamName && await getTeamByName(teamName);
+  return User.updateOne({ id: user.id }, { role, team: team && team.id });
 }

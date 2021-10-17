@@ -16,7 +16,7 @@ PATCH http://localhost:7001/api/v1/users/me
 content-type: application/json
 
 {
-  "team": "JS"
+  "teamName": "JS"
 }
 
 ### token EMPTY
@@ -29,6 +29,14 @@ content-type: application/json
 {
   "username": "one",
   "password": "tw1o"
+}
+
+### create team
+POST http://localhost:7001/api/v1/teams
+content-type: application/json
+
+{
+  "name": "other"
 }
 
 ### none
