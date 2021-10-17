@@ -15,7 +15,7 @@ router
 
     ctx.body = accessToken;
   })
-  .get('/auth/token', async (ctx) => {
+  .get('/auth/token-info', async (ctx) => {
     const { token } = ctx.request.query;
     assert(token, 400, 'token required');
     ctx.body = decrypt(token as string);

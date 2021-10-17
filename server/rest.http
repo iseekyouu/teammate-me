@@ -11,9 +11,16 @@ content-type: application/json
 GET http://localhost:7001/api/v1/users/me
 Authorization: Bearer gw72w042GSFA_jQPU5a_orcG
 
+### update user
+PATCH http://localhost:7001/api/v1/users/me
+content-type: application/json
+
+{
+  "team": "JS"
+}
 
 ### token EMPTY
-GET http://localhost:7001/api/v1/auth/token?token
+GET http://localhost:7001/api/v1/auth/token-info?token=gw72w042GSFA_jQPU5-yppHR
 
 ### sign up
 POST http://localhost:7001/api/v1/users
