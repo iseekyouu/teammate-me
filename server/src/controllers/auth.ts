@@ -1,13 +1,19 @@
 import Router from 'koa-router';
 import { decrypt, encrypt } from 'services/token';
 import assert from 'http-assert';
+import { COOKIE_KEY_ACCESS_TOKEN } from 'lib/constants';
 
 const router = new Router();
 
 router
   .post('/auth/token', async (ctx) => {
     const { username, password } = ctx.request.body;
-    ctx.body = encrypt({ username, password });
+    const accessToken = encrypt({ username, password });
+    ctx.cookies.set(COOKIE_KEY_ACCESS_TOKEN, accessToken, {
+      httpOnly: true,
+    });
+
+    ctx.body = accessToken;
   })
   .get('/auth/token', async (ctx) => {
     const { token } = ctx.request.query;
