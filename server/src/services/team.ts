@@ -1,7 +1,7 @@
 import Team from 'models/Team';
 
 export async function createTeam(name: string) {
-  return Team.create({ name: name.toLocaleLowerCase() });
+  return Team.create({ name: name.toLowerCase() });
 }
 
 export async function getTeamById(id: string) {
@@ -9,5 +9,9 @@ export async function getTeamById(id: string) {
 }
 
 export async function getTeamByName(name: string) {
-  return Team.findOne({ name });
+  return Team.findOne({ name: name.toLowerCase() });
+}
+
+export async function getTeams() {
+  return Team.find();
 }

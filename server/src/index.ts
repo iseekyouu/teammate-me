@@ -7,6 +7,7 @@ import bodyParser from 'koa-bodyparser';
 import authRoutes from 'controllers/auth';
 import usersRoutes from 'controllers/users';
 import teamsRoutes from 'controllers/teams';
+import characterRoutes from 'controllers/character';
 import errorHandler from 'lib/errorHandler';
 
 const app = new Koa();
@@ -19,6 +20,7 @@ router
     authRoutes.routes(),
     usersRoutes.routes(),
     teamsRoutes.routes(),
+    characterRoutes.routes(),
   )
   .use(router.allowedMethods());
 

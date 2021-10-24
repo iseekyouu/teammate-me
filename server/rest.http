@@ -39,6 +39,27 @@ content-type: application/json
   "name": "other"
 }
 
+### creaate character
+POST http://localhost:7001/api/v1/characters
+content-type: application/json
+
+{
+  "name": "alibaba",
+  "userId": "6169b22b1ba9bbfbf503b8d9",
+  "ownerUserId": "6169b22b1ba9bbfbf503b8d9"
+}
+
+### get my character
+GET http://localhost:7001/api/v1/characters/me
+content-type: application/json
+
+
+
+### get teams
+GET http://localhost:7001/api/v1/teams
+content-type: application/json
+
+
 ### none
 POST http://localhost:7001/22222
 content-type: application/json
